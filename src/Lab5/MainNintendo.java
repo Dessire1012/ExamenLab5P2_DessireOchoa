@@ -182,15 +182,16 @@ public class MainNintendo extends javax.swing.JFrame {
                 }
                 
                 if(U instanceof Vendedor){
-                    VendedorPanel newVP = new VendedorPanel();
-                    newVP.setVisible(true);
-                    this.dispose();
+                    VendedorPanel newPanelC = new VendedorPanel();
+                    newPanelC.setVisible(true);
+                    this.dispose(); 
                 }
                 
                 if(U instanceof Comprador){
-                    CompradorPanel newPanelC = new CompradorPanel();
-                    newPanelC.setVisible(true);
-                    this.dispose(); 
+                    CompradorPanel newVP = new CompradorPanel();
+                    newVP.setVisible(true);
+                    this.dispose();
+                    
                 }
 
             }

@@ -267,7 +267,7 @@ public class Registro extends javax.swing.JFrame {
             }
 
             if (display == true) {
-                VendedorPanel newVP = new VendedorPanel();
+                CompradorPanel newVP = new CompradorPanel();
                 newVP.setVisible(true);
                 this.dispose();
 
@@ -294,7 +294,7 @@ public class Registro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, e.getMessage());
             }
             if (display == true) {
-                CompradorPanel newPanelC = new CompradorPanel();
+                VendedorPanel newPanelC = new VendedorPanel();
                 newPanelC.setVisible(true);
                 this.dispose();
 
