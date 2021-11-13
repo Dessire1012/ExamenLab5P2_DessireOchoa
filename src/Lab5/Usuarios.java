@@ -53,12 +53,11 @@ public class Usuarios {
         }else{
             throw new ExceptionNintendo("El usuario debe ser mayor de edad");
         }
-
     }
 
     @Override
     public String toString() {
-        return "Usuarios{" + "nombre=" + nombre + ", nombreU=" + nombreU + ", contrase\u00f1a=" + contraseña + ", edad=" + edad + '}';
+        return "Usuarios{" + "nombre=" + nombre + ", nombreU=" + nombreU + ", contraseña=" + contraseña + ", edad=" + edad + '}';
     }
 
 }

@@ -170,17 +170,21 @@ public class MainNintendo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Edad no entra en los parametros");
         }
         
-        
+        b.setListadeusuarios(listaUsuarios);
 
         for (Usuarios U : listaUsuarios) {
             if (U.getNombreU().equals(jTextField1_Usuario.getText())
                 && U.getContraseña().equals(jTextField2_Contraseña.getText())) {
                  if(U instanceof Administrador){
-                    
+                    Admin newAdP = new Admin();
+                    newAdP.setVisible(true);
+                    this.dispose();
                 }
                 
                 if(U instanceof Vendedor){
-                    
+                    VendedorPanel newVP = new VendedorPanel();
+                    newVP.setVisible(true);
+                    this.dispose();
                 }
                 
                 if(U instanceof Comprador){
@@ -188,8 +192,7 @@ public class MainNintendo extends javax.swing.JFrame {
                     newPanelC.setVisible(true);
                     this.dispose(); 
                 }
-                
-                JOptionPane.showMessageDialog(this, "Usuario encontrado");
+
             }
 
         }
@@ -249,5 +252,7 @@ public class MainNintendo extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ArrayList<Usuarios> listaUsuarios = new ArrayList();
+    BaseDeDatos b = new BaseDeDatos();
+    
 
 }

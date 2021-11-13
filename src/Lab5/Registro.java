@@ -5,17 +5,26 @@
  */
 package Lab5;
 
+import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dessi
  */
 public class Registro extends javax.swing.JFrame {
 
+    BaseDeDatos b = new BaseDeDatos();
+    ArrayList<Usuarios> listaUsuarios = new ArrayList();
+
     /**
      * Creates new form Registro
+     *
      */
     public Registro() {
         initComponents();
+
     }
 
     /**
@@ -203,16 +212,96 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5_PersonajeFavActionPerformed
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        
+
         String nombre;
         String nombreU;
         String contraseña;
         int edad;
-        
-        if (jRadioButton1.isSelected()){
-            
+        String PFav;
+        float estrellas = 0;
+        Random ran = new Random();
+        int dinero = 0;
+        boolean display = false;
+
+        if (jRadioButton1.isSelected()) {
+            nombre = jTextField1_Nombre.getText();
+            nombreU = jTextField2_Usuario.getText();
+            contraseña = jTextField3_Contraseña.getText();
+            edad = Integer.parseInt(jTextField4_Edad.getText());
+
+            try {
+                listaUsuarios.add(new Administrador(nombre, nombreU, contraseña, edad));
+                b.setListadeusuarios(listaUsuarios);
+                display = true;
+            } catch (ExceptionNintendo e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+
+            if (display == true) {
+                Admin newAdP = new Admin();
+                newAdP.setVisible(true);
+                this.dispose();
+            }
         }
-        
+
+        if (jRadioButton2.isSelected()) {
+            CuentaBancaria cuentab = new CuentaBancaria();
+            nombre = jTextField1_Nombre.getText();
+            nombreU = jTextField2_Usuario.getText();
+            contraseña = jTextField3_Contraseña.getText();
+            edad = Integer.parseInt(jTextField4_Edad.getText());
+            dinero = ran.nextInt(10000) + 2000;
+
+            try {
+                cuentab.setSaldoDis(dinero);
+            } catch (ExceptionNintendo e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+
+            try {
+                listaUsuarios.add(new Vendedor(estrellas, 0, contraseña, nombre, nombreU, contraseña, edad));
+                b.setListadeusuarios(listaUsuarios);
+                display = true;
+            } catch (ExceptionNintendo e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+
+            if (display == true) {
+                VendedorPanel newVP = new VendedorPanel();
+                newVP.setVisible(true);
+                this.dispose();
+
+            }
+
+        }
+
+        if (jRadioButton3.isSelected()) {
+            CuentaBancaria cuentab = new CuentaBancaria();
+
+            nombre = jTextField1_Nombre.getText();
+            nombreU = jTextField2_Usuario.getText();
+            contraseña = jTextField3_Contraseña.getText();
+            edad = Integer.parseInt(jTextField4_Edad.getText());
+            PFav = jTextField5_PersonajeFav.getText();
+            dinero = ran.nextInt(800) + 100;
+            cuentab.setNumCuenta(Integer.parseInt(jTextField6_CuentaBanc.getText()));
+
+            try {
+                listaUsuarios.add(new Comprador(dinero, PFav, nombre, nombreU, contraseña, edad));
+                b.setListadeusuarios(listaUsuarios);
+                display = true;
+            } catch (ExceptionNintendo e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+            if (display == true) {
+                CompradorPanel newPanelC = new CompradorPanel();
+                newPanelC.setVisible(true);
+                this.dispose();
+
+            }
+
+        }
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -271,4 +360,5 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5_PersonajeFav;
     private javax.swing.JTextField jTextField6_CuentaBanc;
     // End of variables declaration//GEN-END:variables
+
 }
